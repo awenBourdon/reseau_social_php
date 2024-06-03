@@ -1,26 +1,46 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['connected_id'])) {
+    header("Location: registration.php");
+    exit();
+}
+?>
+
 <!doctype html>
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <title>ReSoC - Flux</title>         
+        <title>Feed / C</title>         
         <meta name="author" content="Julien Falconnet">
+        <link rel="icon" href="./favicon.svg" type="image/x-icon">
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
         <header>
-            <img src="resoc.jpg" alt="Logo de notre réseau social"/>
+            <img src="logo.svg" class="logo"/>
             <nav id="menu">
-                <a href="news.php">Actualités</a>
-                <a href="wall.php?user_id=5">Mur</a>
-                <a href="feed.php?user_id=5">Flux</a>
-                <a href="tags.php?tag_id=1">Mots-clés</a>
+                <a href="news.php"><img src="news.png">Actualités</a>
+                <a href="wall.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="wall.png">Mon Profil</a>
+                <a href="feed.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="flux.png">Flux</a>
+                <a href="tags.php?tag_id=<?php echo $_SESSION['connected_id']; ?>"><img src="tag.svg">Mots-clés</a>
             </nav>
             <nav id="user">
-                <a href="#">Profil</a>
-                <ul>
-                    <li><a href="settings.php?user_id=5">Paramètres</a></li>
-                    <li><a href="followers.php?user_id=5">Mes suiveurs</a></li>
-                    <li><a href="subscriptions.php?user_id=5">Mes abonnements</a></li>
+                <a href="#"><img src="account.svg" class="account">Mon Compte</a>
+                 <ul>
+                    <li><a href="settings.php?user_id=<?php echo $_SESSION['connected_id']; ?>">Paramêtres</a></li>
+                    <li><a href="followers.php?user_id=<?php echo $_SESSION['connected_id']; ?>">Mes Followers</a></li>
+                    <li><a href="subscriptions.php?user_id=<?php echo $_SESSION['connected_id']; ?>">Mes Abonnements</a></li>
+                    <li>
+                    <div class="user-widget">
+                    <?php if($_SESSION['connected_id'] !== null ) : ?>
+                    <a href="logout.php">Me Déconnecter</a>
+                    <?php else : ?>
+                    <a href="login.php">Me connecter</a>
+                     <?php endif; ?>
+                    </div>
+                    </li>
+
                 </ul>
 
             </nav>
@@ -41,7 +61,7 @@
             /**
              * Etape 2: se connecter à la base de donnée
              */
-            $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
+            $mysqli = new mysqli("localhost", "root", "^f2.?abH;Cp?3ZU", "socialnetwork");
             ?>
 
             <aside>
@@ -53,14 +73,14 @@
                 $lesInformations = $mysqli->query($laQuestionEnSql);
                 $user = $lesInformations->fetch_assoc();
                 //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par l'alias et effacer la ligne ci-dessous
-                echo "<pre>" . print_r($user, 1) . "</pre>";
+                //echo "<pre>" . print_r($user, 1) . "</pre>";
                 ?>
-                <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
+                <img src="profil.png" alt="Portrait de l'utilisateur"/>
                 <section>
                     <h3>Présentation</h3>
                     <p>Sur cette page vous trouverez tous les message des utilisatrices
-                        auxquel est abonnée l'utilisatrice XXX
-                        (n° <?php echo $userId ?>)
+                        auxquel est abonnée l'utilisatrice <?php echo $user['alias'] ?>
+                        (n° <?php echo $user['id'] ?>)
                     </p>
 
                 </section>
@@ -73,6 +93,8 @@
                 $laQuestionEnSql = "
                     SELECT posts.content,
                     posts.created,
+                    users.id as user_id,
+                    tags.id as tag_id,
                     users.alias as author_name,  
                     count(likes.id) as like_number,  
                     GROUP_CONCAT(DISTINCT tags.label) AS taglist 
@@ -92,32 +114,29 @@
                     echo("Échec de la requete : " . $mysqli->error);
                 }
 
+                while ($followers = $lesInformations->fetch_assoc())
+                {
+                    //echo "<pre>" . print_r($followers, 1) . "</pre>";
                 /**
                  * Etape 4: @todo Parcourir les messsages et remplir correctement le HTML avec les bonnes valeurs php
                  * A vous de retrouver comment faire la boucle while de parcours...
                  */
                 ?>                
-                <article>
-                    <h3>
-                        <time datetime='2020-02-01 11:12:13' >31 février 2010 à 11h12</time>
-                    </h3>
-                    <address>par AreTirer</address>
-                    <div>
-                        <p>Ceci est un paragraphe</p>
-                        <p>Ceci est un autre paragraphe</p>
-                        <p>... de toutes manières il faut supprimer cet 
-                            article et le remplacer par des informations en 
-                            provenance de la base de donnée</p>
-                    </div>                                            
-                    <footer>
-                        <small>♥ 132</small>
-                        <a href="">#lorem</a>,
-                        <a href="">#piscitur</a>,
-                    </footer>
-                </article>
-                <?php
-                // et de pas oublier de fermer ici vote while
-                ?>
+                    <article>
+                        <h3>
+                            <time datetime='2020-02-01 11:12:13' ><?php echo $followers['created'] ?></time>
+                        </h3>
+                        <address><?php echo $followers['author_name'] ?></address>
+                        <div>
+                            <p><?php echo $followers['content'] ?></p>
+                            
+                        </div>                                            
+                        <footer>
+                            <small><?php echo $followers['like_number'] ?> ♥</small>
+                            <a href="tags.php?tag_id=<?php echo $post['tag_id']?>"><?php echo $followers['taglist'] ?></a>
+                        </footer>
+                    </article>
+                <?php } ?>
 
 
             </main>
