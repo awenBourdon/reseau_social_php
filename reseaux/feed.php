@@ -124,8 +124,9 @@ if (!isset($_SESSION['connected_id'])) {
                 ?>                
                     <article>
                         <h3>
-                            <time datetime='2020-02-01 11:12:13' ><?php echo $followers['created'] ?></time>
+                        <time datetime='<?php echo date("d-m-Y", strtotime($followers["created"])); ?>'><?php echo date("d / m /Y", strtotime($followers['created'])); ?></time>
                         </h3>
+                        <br/>
                         <address><?php echo $followers['author_name'] ?></address>
                         <div>
                             <p><?php echo $followers['content'] ?></p>

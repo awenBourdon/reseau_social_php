@@ -167,8 +167,9 @@ if ($lesInformations) {
 
             <article>
                 <h3>
-                    <time datetime='<?php echo $post['created']; ?>'><?php echo $post['created']; ?></time>
+                <time datetime='<?php echo date("d-m-Y", strtotime($post["created"])); ?>'><?php echo date("d / m /Y", strtotime($post['created'])); ?></time>
                 </h3>
+                <br/>
                 <address><a href="wall.php?user_id=<?php echo $post['user_id']; ?>"><?php echo $post['author_name']; ?></a></address>
                 <div>
                     <p><?php echo $post['content']; ?></p>

@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </aside>
     <main>
         <?php
-     
+        
         $laQuestionEnSql = "
             SELECT posts.id as post_id, posts.content, posts.created, users.alias as author_name,
             users.id as user_id,
@@ -113,8 +113,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <article>
                 <h3>
-                    <time><?php echo $post['created']; ?></time>
+                <time datetime='<?php echo date("d-m-Y", strtotime($post['created'])); ?>'><?php echo date("d / m / Y", strtotime($post['created'])); ?></time>
                 </h3>
+                <br/>
                 <address><a href="wall.php?user_id=<?php echo $post['user_id']; ?>"><?php echo $post['author_name']; ?></a></address>
                 <div>
                     <p><?php echo $post['content']; ?></p>
