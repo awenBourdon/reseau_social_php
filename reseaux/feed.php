@@ -20,9 +20,9 @@ if (!isset($_SESSION['connected_id'])) {
         <header>
             <img src="images/logo.svg" class="logo"/>
             <nav id="menu">
-                <a href="news.php"><img src="images/news.png">Actualités</a>
+                <a href="news.php"><img src="images/news.png">Home</a>
                 <a href="wall.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/wall.png">Mon Profil</a>
-                <a href="feed.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/flux.png">Flux</a>
+                <a href="feed.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/flux.png">Actualités</a>
                 <a href="tags.php?tag_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/tag.svg">Mots-clés</a>
             </nav>
             <nav id="user">
@@ -132,6 +132,18 @@ if (!isset($_SESSION['connected_id'])) {
                             
                         </div>                                            
                         <footer>
+                        <form action="" method="post" style="display: inline;">
+                        <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
+                        <?php if ($post['liked_by_user'] == 0) : ?>
+                            <button type="submit" name="like" style="border: none; background: none; cursor: pointer;">
+                                <img src="images/like_icon.png" alt="Like" width="30" height="30">
+                            </button>
+                        <?php else : ?>
+                            <button type="submit" name="dislike" style="border: none; background: none; cursor: pointer;">
+                                <img src="images/dislike_icon.png" alt="Dislike" width="30" height="30">
+                            </button>
+                        <?php endif; ?>
+                    </form>
                             <small><?php echo $followers['like_number'] ?> ♥</small>
                             <a href="tags.php?tag_id=<?php echo $post['tag_id']?>"><?php echo $followers['taglist'] ?></a>
                         </footer>

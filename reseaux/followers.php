@@ -20,9 +20,9 @@ if (!isset($_SESSION['connected_id'])) {
     <header>
             <img src="images/logo.svg" class="logo"/>
             <nav id="menu">
-                <a href="news.php"><img src="images/news.png">Actualités</a>
+                <a href="news.php"><img src="images/news.png">Home</a>
                 <a href="wall.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/wall.png">Mon Profil</a>
-                <a href="feed.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/flux.png">Flux</a>
+                <a href="feed.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/flux.png">Actualités</a>
                 <a href="tags.php?tag_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/tag.svg">Mots-clés</a>
             </nav>
             <nav id="user">

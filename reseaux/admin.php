@@ -20,9 +20,9 @@ if (!isset($_SESSION['connected_id'])) {
         <header>
             <img src="images/logo.svg" class="logo"/>
             <nav id="menu">
-                <a href="news.php"><img src="images/news.png">Actualités</a>
+                <a href="news.php"><img src="images/news.png">Home</a>
                 <a href="wall.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/wall.png">Mon Profil</a>
-                <a href="feed.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/flux.png">Flux</a>
+                <a href="feed.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/flux.png">Actualités</a>
                 <a href="tags.php?tag_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/tag.svg">Mots-clés</a>
             </nav>
             <nav id="user">
@@ -121,7 +121,7 @@ if (!isset($_SESSION['connected_id'])) {
                         <p><?php echo $users['email'] ?></p>
                         <nav>
                             <a href="wall.php?user_id=<?php echo $users['id']?>">Mur</a>
-                            | <a href="feed.php?user_id=<?php echo $users['id']?>">Flux</a>
+                            | <a href="feed.php?user_id=<?php echo $users['id']?>">Actualités</a>
                             | <a href="settings.php?user_id=<?php echo $users['id']?>">Paramètres</a>
                             | <a href="followers.php?user_id=<?php echo $users['id']?>">Suiveurs</a>
                             | <a href="subscriptions.php?user_id=<?php echo $users['id']?>">Abonnements</a>

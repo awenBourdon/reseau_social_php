@@ -44,9 +44,9 @@ if ($lesInformations) {
 <header>
     <img src="images/logo.svg" class="logo"/>
     <nav id="menu">
-        <a href="news.php"><img src="images/news.png">Actualités</a>
+        <a href="news.php"><img src="images/news.png">Home</a>
         <a href="wall.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/wall.png">Mon Profil</a>
-        <a href="feed.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/flux.png">Flux</a>
+        <a href="feed.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/flux.png">Actualités</a>
         <a href="tags.php?tag_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/tag.svg">Mots-clés</a>
     </nav>
     <nav id="user">
@@ -125,7 +125,7 @@ if ($lesInformations) {
         <?php
         }
 
-        // Récupération des messages de l'utilisateur consulté
+        
         $laQuestionEnSql = "
             SELECT posts.id as post_id, posts.content, posts.created, users.alias as author_name,
             users.id as user_id,
@@ -146,25 +146,22 @@ if ($lesInformations) {
             echo "Échec de la requête : " . $mysqli->error;
         }
 
-        // Suppression d'un message
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST'
         && isset($_POST['delete'])) {
     
             $postIdToDelete = $_POST['post_id'];
         
-            // Préparation de la requête SQL de suppression
-            //$deleteQuery = "UPDATE posts SET deleted = 1 WHERE id='$postIdToDelete'";
-            
-            // Exécution de la requête de suppression
+           
             if ($mysqli->query($deleteQuery)) {
-                // Redirection de l'utilisateur vers la page actuelle pour actualiser les messages
+               
                 header("Location: {$_SERVER['REQUEST_URI']}");
                 exit();
             } else {
             }
         }
 
-        // Affichage des messages de l'utilisateur consulté
+        
         while ($post = $lesInformations->fetch_assoc()) {
         ?>
 
@@ -192,7 +189,7 @@ if ($lesInformations) {
                     <small><?php echo $post['like_number']; ?> ♥</small>
                     <a href="tags.php?tag_id=<?php echo $post['tag_id']; ?>"><?php echo $post['taglist']; ?></a>
                     
-                    <!-- Bouton de suppression du message -->
+                    
                     <?php if ($post['user_id'] == $_SESSION['connected_id']) : ?>
                         <form action="" method="post" style="display: inline;">
                             <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
