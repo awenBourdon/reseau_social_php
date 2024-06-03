@@ -14,7 +14,7 @@ if ($_SESSION['connected_id'] !== null) {
         <meta charset="utf-8">
         <title>Connexion / c</title> 
         <meta name="author" content="Julien Falconnet">
-        <link rel="icon" href="./favicon.svg" type="image/x-icon">
+        <link rel="icon" href="images/favicon.svg" type="image/x-icon">
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body>

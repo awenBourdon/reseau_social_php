@@ -13,20 +13,20 @@ if (!isset($_SESSION['connected_id'])) {
         <meta charset="utf-8">
         <title>Mes abonnés / C</title> 
         <meta name="author" content="Julien Falconnet">
-        <link rel="icon" href="./favicon.svg" type="image/x-icon">
+        <link rel="icon" href="images/favicon.svg" type="image/x-icon">
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
     <header>
-            <img src="logo.svg" class="logo"/>
+            <img src="images/logo.svg" class="logo"/>
             <nav id="menu">
-                <a href="news.php"><img src="news.png">Actualités</a>
-                <a href="wall.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="wall.png">Mon Profil</a>
-                <a href="feed.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="flux.png">Flux</a>
-                <a href="tags.php?tag_id=<?php echo $_SESSION['connected_id']; ?>"><img src="tag.svg">Mots-clés</a>
+                <a href="news.php"><img src="images/news.png">Actualités</a>
+                <a href="wall.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/wall.png">Mon Profil</a>
+                <a href="feed.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/flux.png">Flux</a>
+                <a href="tags.php?tag_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/tag.svg">Mots-clés</a>
             </nav>
             <nav id="user">
-                <a href="#"><img src="account.svg" class="account">Mon Compte</a>
+                <a href="#"><img src="images/account.svg" class="account">Mon Compte</a>
                  <ul>
                     <li><a href="settings.php?user_id=<?php echo $_SESSION['connected_id']; ?>">Paramêtres</a></li>
                     <li><a href="followers.php?user_id=<?php echo $_SESSION['connected_id']; ?>">Mes Followers</a></li>
@@ -76,7 +76,7 @@ if (!isset($_SESSION['connected_id'])) {
                 while ($followers = $lesInformations->fetch_assoc()) {
                     ?>
                     <article>
-                        <img src="profil.png" alt="blason"/>
+                        <img src="images/profil.png" alt="blason"/>
                         <h3><?php echo $followers['alias'] ?></h3>
                         <p>id:<?php echo $followers['id'] ?></p>
                     </article>
