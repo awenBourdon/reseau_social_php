@@ -97,7 +97,7 @@ if ($lesInformations) {
             }
         }
         
-        // Affichage du formulaire pour poster un message si l'utilisateur consulte son propre profil
+        
         if ($userId == $_SESSION['connected_id']) {
         ?>
             <article>

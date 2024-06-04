@@ -47,33 +47,21 @@ if (!isset($_SESSION['connected_id'])) {
         </header>
         <div id="wrapper">
             <?php
-            /**
-             * Cette page est TRES similaire à wall.php. 
-             * Vous avez sensiblement à y faire la meme chose.
-             * Il y a un seul point qui change c'est la requete sql.
-             */
-            /**
-             * Etape 1: Le mur concerne un utilisateur en particulier
-             */
+            
             $userId = intval($_GET['user_id']);
             ?>
             <?php
-            /**
-             * Etape 2: se connecter à la base de donnée
-             */
+            
             $mysqli = new mysqli("localhost", "root", "^f2.?abH;Cp?3ZU", "socialnetwork");
             ?>
 
             <aside>
                 <?php
-                /**
-                 * Etape 3: récupérer le nom de l'utilisateur
-                 */
+                
                 $laQuestionEnSql = "SELECT * FROM `users` WHERE id= '$userId' ";
                 $lesInformations = $mysqli->query($laQuestionEnSql);
                 $user = $lesInformations->fetch_assoc();
-                //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par l'alias et effacer la ligne ci-dessous
-                //echo "<pre>" . print_r($user, 1) . "</pre>";
+               
                 ?>
                 <img src="images/people.png" alt="Portrait de l'utilisateur"/>
                 <section>
@@ -87,9 +75,7 @@ if (!isset($_SESSION['connected_id'])) {
             </aside>
             <main>
                 <?php
-                /**
-                 * Etape 3: récupérer tous les messages des abonnements
-                 */
+                
                 $laQuestionEnSql = "
                     SELECT posts.content,
                     posts.created,
@@ -116,11 +102,7 @@ if (!isset($_SESSION['connected_id'])) {
 
                 while ($followers = $lesInformations->fetch_assoc())
                 {
-                    //echo "<pre>" . print_r($followers, 1) . "</pre>";
-                /**
-                 * Etape 4: @todo Parcourir les messsages et remplir correctement le HTML avec les bonnes valeurs php
-                 * A vous de retrouver comment faire la boucle while de parcours...
-                 */
+                  
                 ?>                
                     <article>
                         <h3>

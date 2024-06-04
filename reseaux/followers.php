@@ -47,7 +47,7 @@ if (!isset($_SESSION['connected_id'])) {
         </header>
         <div id="wrapper">          
             <aside>
-                <img src = "people.png" alt = "Portrait de l'utilisatrice"/>
+                <img src = "images/people.png" alt = "Portrait de l'utilisatrice"/>
                 <section>
                     <h3>Présentation</h3>
                     <p>Sur cette page vous trouverez la liste des personnes qui
@@ -58,11 +58,11 @@ if (!isset($_SESSION['connected_id'])) {
             </aside>
             <main class='contacts'>
                 <?php
-                // Etape 1: récupérer l'id de l'utilisateur
+                
                 $userId = intval($_GET['user_id']);
-                // Etape 2: se connecter à la base de donnée
+               
                 $mysqli = new mysqli("localhost", "root", "^f2.?abH;Cp?3ZU", "socialnetwork");
-                // Etape 3: récupérer le nom de l'utilisateur
+                
                 $laQuestionEnSql = "
                     SELECT users.*
                     FROM followers
@@ -71,8 +71,7 @@ if (!isset($_SESSION['connected_id'])) {
                     GROUP BY users.id
                     ";
                 $lesInformations = $mysqli->query($laQuestionEnSql);
-                // Etape 4: à vous de jouer
-                //@todo: faire la boucle while de parcours des abonnés et mettre les bonnes valeurs ci dessous 
+                 
                 while ($followers = $lesInformations->fetch_assoc()) {
                     ?>
                     <article>
