@@ -44,9 +44,9 @@ if ($lesInformations) {
 <header>
     <img src="images/logo.svg" class="logo"/>
     <nav id="menu">
-        <a href="news.php"><img src="images/news.png">Home</a>
-        <a href="wall.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/wall.png">Mon Profil</a>
-        <a href="feed.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/flux.png">Actualités</a>
+        <a href="news.php"><img src="images/wall.png">Home</a>
+        <a href="wall.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/flux.png">Mon Profil</a>
+        <a href="feed.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/news.png">Actualités</a>
         <a href="tags.php?tag_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/tag.svg">Mots-clés</a>
     </nav>
     <nav id="user">
@@ -69,7 +69,7 @@ if ($lesInformations) {
 </header>
 <div id="wrapper">
     <aside>
-        <img src="images/profil.png" alt="Portrait de l'utilisateur"/>
+        <img src="images/people.png" alt="Portrait de l'utilisateur"/>
         <section>
             <h3>Présentation</h3>
             <p>Sur cette page vous trouverez tous les messages de l'utilisateur : <?php echo $user['alias']; ?>

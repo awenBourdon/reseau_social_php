@@ -23,7 +23,8 @@ if ($_SESSION['connected_id'] !== null) {
         <div id="wrapper" >
 
             <aside>
-                
+                <h2>Présentation</h2>
+                <p>Bienvenu sur notre réseau social.</p>
             </aside>
             <main>
                 <article>
@@ -84,13 +85,13 @@ if ($_SESSION['connected_id'] !== null) {
                             <dt><label for='email'>E-Mail</label></dt>
                             <dd><input type='email'name='email'></dd>
                             <dt><label for='motpasse'>Mot de passe</label></dt>
-                            <dd><input type='password'name='motpasse'></dd>
+                            <dd><input class="whiteform" type='password'name='motpasse'></dd>
                         </dl>
-                        <input type='submit'>
+                        <input type='submit' class="orange-button">
                     </form>
                     <p>
                         Vous avez déjà un compte ?
-                        <a href='login.php'>Se connecter.</a>
+                        <a href='login.php' class="orange-button"><B>Se connecter.</B></a>
                     </p>
                 </article>
             </main>

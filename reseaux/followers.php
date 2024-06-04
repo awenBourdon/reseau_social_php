@@ -20,9 +20,9 @@ if (!isset($_SESSION['connected_id'])) {
     <header>
             <img src="images/logo.svg" class="logo"/>
             <nav id="menu">
-                <a href="news.php"><img src="images/news.png">Home</a>
-                <a href="wall.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/wall.png">Mon Profil</a>
-                <a href="feed.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/flux.png">Actualités</a>
+                <a href="news.php"><img src="images/wall.png">Home</a>
+                <a href="wall.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/flux.png">Mon Profil</a>
+                <a href="feed.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/news.png">Actualités</a>
                 <a href="tags.php?tag_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/tag.svg">Mots-clés</a>
             </nav>
             <nav id="user">
@@ -47,7 +47,7 @@ if (!isset($_SESSION['connected_id'])) {
         </header>
         <div id="wrapper">          
             <aside>
-                <img src = "profil.png" alt = "Portrait de l'utilisatrice"/>
+                <img src = "people.png" alt = "Portrait de l'utilisatrice"/>
                 <section>
                     <h3>Présentation</h3>
                     <p>Sur cette page vous trouverez la liste des personnes qui
@@ -76,7 +76,7 @@ if (!isset($_SESSION['connected_id'])) {
                 while ($followers = $lesInformations->fetch_assoc()) {
                     ?>
                     <article>
-                        <img src="images/profil.png" alt="blason"/>
+                        <img src="images/people.png" alt="blason"/>
                         <h3><?php echo $followers['alias'] ?></h3>
                         <p>id:<?php echo $followers['id'] ?></p>
                     </article>

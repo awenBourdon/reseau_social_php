@@ -20,9 +20,9 @@ if (!isset($_SESSION['connected_id'])) {
         <header>
             <img src="images/logo.svg" class="logo"/>
             <nav id="menu">
-                <a href="news.php"><img src="images/news.png">Home</a>
-                <a href="wall.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/wall.png">Mon Profil</a>
-                <a href="feed.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/flux.png">Actualités</a>
+                <a href="news.php"><img src="images/wall.png">Home</a>
+                <a href="wall.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/flux.png">Mon Profil</a>
+                <a href="feed.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/news.png">Actualités</a>
                 <a href="tags.php?tag_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/tag.svg">Mots-clés</a>
             </nav>
             <nav id="user">
@@ -75,7 +75,7 @@ if (!isset($_SESSION['connected_id'])) {
                 //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par l'alias et effacer la ligne ci-dessous
                 //echo "<pre>" . print_r($user, 1) . "</pre>";
                 ?>
-                <img src="images/profil.png" alt="Portrait de l'utilisateur"/>
+                <img src="images/people.png" alt="Portrait de l'utilisateur"/>
                 <section>
                     <h3>Présentation</h3>
                     <p>Sur cette page vous trouverez tous les message des utilisatrices

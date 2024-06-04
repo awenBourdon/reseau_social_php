@@ -1,16 +1,24 @@
 <?php
+session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $user_id = intval($_POST['user_id']);
+    $userId = intval($_POST['userId']);
 
-    $mysqli = new mysqli("localhost", "root", "^f2.?abH;Cp?3ZU", "socialnetwork");
+    $servername = "localhost";
+    $username = "root";
+    $password = "^f2.?abH;Cp?3ZU";
+    $dbname = "socialnetwork";
 
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
-    }
+    } 
 
- 
-    $sql = "DELETE FROM user WHERE id = $user_id";
+    //Filter on DB
+    $sql = "DELETE FROM user WHERE id=$userId";
 
+    //Check result
     if ($conn->query($sql) === TRUE) {
         echo "Utilisateur supprimé avec succès";
     } else {
@@ -22,3 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit();
 }
 ?>
+
+
+
+

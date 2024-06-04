@@ -87,11 +87,11 @@ if ($_SESSION['connected_id'] !== null) {
                             <dt><label for='motpasse'>Mot de passe</label></dt>
                             <dd><input type='password'name='motpasse'></dd>
                         </dl>
-                        <input type='submit'>
+                        <input type='submit' class="orange-button">
                     </form>
                     <p>
                         Pas de compte?
-                        <a href='registration.php'>Inscrivez-vous.</a>
+                        <a href='registration.php'><B>Inscrivez-vous.</B></a>
                     </p>
 
                 </article>
