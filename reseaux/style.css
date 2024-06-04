@@ -93,12 +93,12 @@ header #user ul {
     top: 100%;
     left: 0px;
     transform: translateX(-50%);
-    background-color: #333333;
+    background-color: #111111;
+    border-radius: 15px;
     font-size: 20px;
-    border-radius: 20px;
-    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.3);
+    border: solid 1px #f5f5f5;
     margin: 0;
-    padding: 0;
+    padding: 20px;
     list-style: none;
 }
 

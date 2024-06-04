@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+error_reporting(0);
 if (!isset($_SESSION['connected_id'])) {
     header("Location: registration.php");
     exit();
@@ -20,10 +20,10 @@ if (!isset($_SESSION['connected_id'])) {
     <header>
         <img src="images/logo.svg" class="logo"/>
         <nav id="menu">
-            <a href="news.php"><img src="images/wall.png">Home</a>
+            <a href="news.php"><img src="images/news.png">Home</a>
             <a href="wall.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/flux.png">Mon Profil</a>
             <a href="feed.php?user_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/news.png">Actualités</a>
-            <a href="tags.php?tag_id=<?php echo $_SESSION['connected_id']; ?>"><img src="images/tag.svg">Mots-clés</a>
+            <a href="alltags.php"><img src="images/tag.svg">Mots-clés</a>
         </nav>
         <nav id="user">
             <a href="#"><img src="images/account.svg" class="account">Mon Compte</a>

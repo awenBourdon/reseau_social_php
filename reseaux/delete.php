@@ -2,40 +2,45 @@
 session_start();
 $mysqli = new mysqli("localhost", "root", "^f2.?abH;Cp?3ZU", "socialnetwork");
 
-if ($mysqli->connect_errno) {
-    die("Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error);
+// Vérification de la connexion
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
 }
 
 $userId = $_SESSION['connected_id'];
 
-// Begin a transaction
-$mysqli->begin_transaction();
-
-try {
-    
-    $mysqli->query("DELETE FROM posts WHERE user_id = $userId");
-    $mysqli->query("DELETE FROM followers WHERE followed_user_id = $userId");
-    $mysqli->query("DELETE FROM likes WHERE user_id = $userId");
-    
-
-    
-    $delete = "DELETE FROM users WHERE id_user = $userId";
-    $mysqli->query($delete);
-
-    
-    $mysqli->commit();
-} catch (Exception $e) {
-   
-    $mysqli->rollback();
-    echo "Failed to delete user: " . $e->getMessage();
+// Suppression des lignes dans les tables qui ont des clés étrangères pointant vers 'posts'
+$postForeignKeyTables = ['posts_tags']; // Ajouter toutes les tables avec des FK vers 'posts'
+foreach ($postForeignKeyTables as $table) {
+    $deleteQuery = $mysqli->prepare("DELETE FROM `$table` WHERE `post_id` IN (SELECT `id` FROM `posts` WHERE `user_id` = ?)");
+    $deleteQuery->bind_param("i", $userId);
+    if ($deleteQuery->execute() === FALSE) {
+        echo "Error deleting records from $table: " . $deleteQuery->error;
+    }
+    $deleteQuery->close();
 }
 
-// Redirect to registration page or another appropriate page
-header("Location: registration.php");
-exit();
+// Liste des tables ayant des clés étrangères référencées à 'users'
+$foreignKeyTables = ['posts', 'followers', 'likes']; // 'users' n'a pas besoin d'être dans cette liste
+
+// Suppression des lignes dans les tables enfants
+foreach ($foreignKeyTables as $table) {
+    $deleteQuery = $mysqli->prepare("DELETE FROM `$table` WHERE `id` = ?");
+    $deleteQuery->bind_param("i", $userId);
+    $deleteQuery->close();
+}
+
+// Suppression de l'utilisateur
+$deleteUserQuery = $mysqli->prepare("DELETE FROM `users` WHERE `id` = ?");
+$deleteUserQuery->bind_param("i", $userId);
+if ($deleteUserQuery->execute() === TRUE) {
+    // Redirection vers la page d'inscription
+    header("Location: registration.php");
+    exit();
+} else {
+    echo "Error deleting user: " . $deleteUserQuery->error;
+}
+$deleteUserQuery->close();
+
+$mysqli->close();
 ?>
-
-
-
-
-
