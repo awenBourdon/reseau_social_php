@@ -75,7 +75,7 @@ if (!isset($_SESSION['connected_id'])) {
                 while ($followers = $lesInformations->fetch_assoc()) {
                     ?>
                     <article>
-                        <img src="images/people.png" alt="blason"/>
+                        <img src="images/account.svg" alt="blason"/>
                         <h3><?php echo $followers['alias'] ?></h3>
                         <p>id:<?php echo $followers['id'] ?></p>
                     </article>

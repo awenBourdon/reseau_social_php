@@ -2,20 +2,20 @@
 error_reporting(0);
 session_start();
 
-// Vérifiez si l'utilisateur est connecté
+
 if (!isset($_SESSION['connected_id'])) {
     header("Location: registration.php");
     exit();
 }
 
-// Connexion à la base de données
+
 $mysqli = new mysqli("localhost", "root", "^f2.?abH;Cp?3ZU", "socialnetwork");
 if ($mysqli->connect_errno) {
     echo "Échec de la connexion à MySQL : " . $mysqli->connect_error;
     exit();
 }
 
-// Récupération de l'ID de l'utilisateur connecté et de l'ID de l'utilisateur dont le profil est consulté
+
 $connectedUserId = $_SESSION['connected_id'];
 $userId = intval($_GET['user_id']);
 
@@ -116,7 +116,7 @@ if ($lesInformations) {
                 ?>
                 <form action="wall.php?user_id=<?php echo $_SESSION['connected_id']; ?>" method="post">
                     <dl>
-                        <dt><label for='message'>Message</label></dt>
+                        <dt><label>Message</label></dt>
                         <dd><textarea name='message'></textarea></dd>
                     </dl>
                     <input type='submit' value='Poster' class="orange-button" >
@@ -175,6 +175,11 @@ if ($lesInformations) {
                     <p><?php echo $post['content']; ?></p>
                 </div>
                 <footer>
+
+
+
+
+                
                     <form action="" method="post" style="display: inline;">
                         <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
                         <?php if ($post['liked_by_user'] == 0) : ?>
@@ -199,6 +204,11 @@ if ($lesInformations) {
                             </button>
                         </form>
                     <?php endif; ?>
+
+
+
+
+
                 </footer>
             </article>
 
