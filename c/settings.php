@@ -55,7 +55,7 @@ if (!isset($_SESSION['connected_id'])) {
                 
                 $userId = intval($_GET['user_id']);                
                  
-                $mysqli = new mysqli("localhost", "root", " écrivez votre mot de passe ici, sinon si Mac -> root ou Windows -> vide", "socialnetwork");                
+                $mysqli = new mysqli("localhost", "root", "", "socialnetwork");                
                  
                 $laQuestionEnSql = "
                     SELECT users.*,

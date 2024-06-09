@@ -56,7 +56,7 @@ if (!isset($_SESSION['connected_id'])) {
     <ul>
     <img src="images/tag.svg">
         <?php
-        $mysqli = new mysqli("localhost", "root", " écrivez votre mot de passe ici, sinon si Mac -> root ou Windows -> vide", "socialnetwork");
+        $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
         
         if ($mysqli->connect_error) {
             die("Connection failed: " . $mysqli->connect_error);

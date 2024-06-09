@@ -46,7 +46,7 @@ if (!isset($_SESSION['connected_id'])) {
     <div id="wrapper">
         <?php
         $tagId = intval($_GET['tag_id']);
-        $mysqli = new mysqli("localhost", "root", " écrivez votre mot de passe ici, sinon si Mac -> root ou Windows -> vide", "socialnetwork");
+        $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
         
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['like'])) {

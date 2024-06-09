@@ -48,7 +48,7 @@ if (!isset($_SESSION['connected_id'])) {
 
         <?php
         
-        $mysqli = new mysqli("localhost", "root", " écrivez votre mot de passe ici, sinon si Mac -> root ou Windows -> vide", "socialnetwork");
+        $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
         
         if ($mysqli->connect_error)
         {

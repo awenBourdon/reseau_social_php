@@ -58,7 +58,7 @@ if (!isset($_SESSION['connected_id'])) {
                     <h2>Poster un message</h2>
                     <?php
                     
-                    $mysqli = new mysqli("localhost", "root", " écrivez votre mot de passe ici, sinon si Mac -> root ou Windows -> vide", "socialnetwork");
+                    $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
                     
                     $listAuteurs = [];
                     $laQuestionEnSql = "SELECT * FROM users";

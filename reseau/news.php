@@ -7,7 +7,7 @@ if (!isset($_SESSION['connected_id'])) {
 }
 
 
-$mysqli = new mysqli("localhost", "root", " écrivez votre mot de passe ici, sinon si Mac -> root ou Windows -> vide", "socialnetwork");
+$mysqli = new mysqli("localhost", "root", "", "socialnetwork");
 if ($mysqli->connect_errno) {
     echo "Échec de la connexion à MySQL : " . $mysqli->connect_error;
     exit();

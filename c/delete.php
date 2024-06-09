@@ -1,6 +1,6 @@
 <?php
 session_start();
-$mysqli = new mysqli("localhost", "root", " écrivez votre mot de passe ici, sinon si Mac -> root ou Windows -> vide", "socialnetwork");
+$mysqli = new mysqli("localhost", "root", "", "socialnetwork");
 
 // Vérification de la connexion
 if ($mysqli->connect_error) {

@@ -41,7 +41,7 @@ if ($_SESSION['connected_id'] !== null) {
 
 
                        
-                        $mysqli = new mysqli("localhost", "root", " écrivez votre mot de passe ici, sinon si Mac -> root ou Windows -> vide", "socialnetwork");
+                        $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
                         
                         $new_email = $mysqli->real_escape_string($new_email);
                         $new_alias = $mysqli->real_escape_string($new_alias);
