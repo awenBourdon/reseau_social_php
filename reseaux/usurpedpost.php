@@ -12,7 +12,7 @@ if (!isset($_SESSION['connected_id'])) {
     <head>
     <meta charset="utf-8">
         <title>ReSoC - Home</title> 
-        <meta name="author" content="Julien Falconnet">
+        <meta name="author" content="Nora et Awen">
         <link rel="icon" href="images/favicon.svg" type="image/x-icon">
         <link rel="stylesheet" href="style.css"/>
     </head>
@@ -58,7 +58,7 @@ if (!isset($_SESSION['connected_id'])) {
                     <h2>Poster un message</h2>
                     <?php
                     
-                    $mysqli = new mysqli("localhost", "root", "^f2.?abH;Cp?3ZU", "socialnetwork");
+                    $mysqli = new mysqli("localhost", "root", " écrivez votre mot de passe ici, sinon si Mac -> root ou Windows -> vide", "socialnetwork");
                     
                     $listAuteurs = [];
                     $laQuestionEnSql = "SELECT * FROM users";

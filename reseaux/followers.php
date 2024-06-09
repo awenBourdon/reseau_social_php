@@ -12,7 +12,7 @@ if (!isset($_SESSION['connected_id'])) {
     <head>
         <meta charset="utf-8">
         <title>Mes abonnés / C</title> 
-        <meta name="author" content="Julien Falconnet">
+        <meta name="author" content="Nora et Awen">
         <link rel="icon" href="images/favicon.svg" type="image/x-icon">
         <link rel="stylesheet" href="style.css"/>
     </head>
@@ -61,7 +61,7 @@ if (!isset($_SESSION['connected_id'])) {
                 
                 $userId = intval($_GET['user_id']);
                
-                $mysqli = new mysqli("localhost", "root", "^f2.?abH;Cp?3ZU", "socialnetwork");
+                $mysqli = new mysqli("localhost", "root", " écrivez votre mot de passe ici, sinon si Mac -> root ou Windows -> vide", "socialnetwork");
                 
                 $laQuestionEnSql = "
                     SELECT users.*

@@ -1,6 +1,6 @@
 <?php
 session_start();
-$mysqli = new mysqli("localhost", "root", "^f2.?abH;Cp?3ZU", "socialnetwork");
+$mysqli = new mysqli("localhost", "root", " écrivez votre mot de passe ici, sinon si Mac -> root ou Windows -> vide", "socialnetwork");
 
 // Vérification de la connexion
 if ($mysqli->connect_error) {
@@ -30,7 +30,7 @@ foreach ($foreignKeyTables as $table) {
     $deleteQuery->close();
 }
 
-// Suppression de l'utilisateur
+// Suppression de
 $deleteUserQuery = $mysqli->prepare("DELETE FROM `users` WHERE `id` = ?");
 $deleteUserQuery->bind_param("i", $userId);
 if ($deleteUserQuery->execute() === TRUE) {

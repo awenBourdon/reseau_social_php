@@ -13,7 +13,7 @@ if ($_SESSION['connected_id'] !== null) {
     <head>
         <meta charset="utf-8">
         <title>Connexion / c</title> 
-        <meta name="author" content="Julien Falconnet">
+        <meta name="author" content="Nora et Awen">
         <link rel="icon" href="images/favicon.svg" type="image/x-icon">
         <link rel="stylesheet" href="style.css"/>
     </head>
@@ -39,7 +39,7 @@ if ($_SESSION['connected_id'] !== null) {
 
 
                         
-                        $mysqli = new mysqli("localhost", "root", "^f2.?abH;Cp?3ZU", "socialnetwork");
+                        $mysqli = new mysqli("localhost", "root", " écrivez votre mot de passe ici, sinon si Mac -> root ou Windows -> vide", "socialnetwork");
                         
                         $emailAVerifier = $mysqli->real_escape_string($emailAVerifier);
                         $passwdAVerifier = $mysqli->real_escape_string($passwdAVerifier);

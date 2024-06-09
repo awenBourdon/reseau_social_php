@@ -9,7 +9,7 @@ if (!isset($_SESSION['connected_id'])) {
 }
 
 
-$mysqli = new mysqli("localhost", "root", "^f2.?abH;Cp?3ZU", "socialnetwork");
+$mysqli = new mysqli("localhost", "root", " écrivez votre mot de passe ici, sinon si Mac -> root ou Windows -> vide", "socialnetwork");
 if ($mysqli->connect_errno) {
     echo "Échec de la connexion à MySQL : " . $mysqli->connect_error;
     exit();
@@ -19,7 +19,7 @@ if ($mysqli->connect_errno) {
 $connectedUserId = $_SESSION['connected_id'];
 $userId = intval($_GET['user_id']);
 
-// Récupération des informations sur l'utilisateur dont le profil est consulté
+
 $laQuestionEnSql = "SELECT * FROM users WHERE id='$userId'";
 $lesInformations = $mysqli->query($laQuestionEnSql);
 if ($lesInformations) {
@@ -36,7 +36,7 @@ if ($lesInformations) {
 <head>
     <meta charset="utf-8">
     <title>Mon Profil / C</title> 
-    <meta name="author" content="Julien Falconnet">
+    <meta name="author" content="Nora et Awen">
     <link rel="icon" href="images/favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="style.css"/>
 </head>
@@ -69,10 +69,10 @@ if ($lesInformations) {
 </header>
 <div id="wrapper">
     <aside>
-        <img src="images/people.png" alt="Portrait de l'utilisateur"/>
+        <img src="images/people.png" alt="Portrait de"/>
         <section>
             <h3>Présentation</h3>
-            <p>Sur cette page vous trouverez tous les messages de l'utilisateur : <?php echo $user['alias']; ?>
+            <p>Sur cette page vous trouverez tous les messages de : <?php echo $user['alias']; ?>
                 (n° <?php echo $user['id']; ?>)
             </p>
         </section>
@@ -85,6 +85,7 @@ if ($lesInformations) {
                 $postId = $_POST['post_id'];
                 $checkLikeQuery = "SELECT * FROM likes WHERE user_id='$connectedUserId' AND post_id='$postId'";
                 $result = $mysqli->query($checkLikeQuery);
+                
                 if ($result && $result->num_rows == 0) {
                     $likeQuery = "INSERT INTO likes (user_id, post_id) VALUES ('$connectedUserId', '$postId')";
                     if (!$mysqli->query($likeQuery)) {
@@ -176,10 +177,6 @@ if ($lesInformations) {
                 </div>
                 <footer>
 
-
-
-
-                
                     <form action="" method="post" style="display: inline;">
                         <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
                         <?php if ($post['liked_by_user'] == 0) : ?>
@@ -194,20 +191,6 @@ if ($lesInformations) {
                     </form>
                     <small><?php echo $post['like_number']; ?> ♥</small>
                     <a href="tags.php?tag_id=<?php echo $post['tag_id']; ?>"><?php echo $post['taglist']; ?></a>
-                    
-                    
-                    <?php if ($post['user_id'] == $_SESSION['connected_id']) : ?>
-                        <form action="" method="post" style="display: inline;">
-                            <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
-                            <button type="submit" name="delete" style="border: none; background: none; cursor: pointer;">
-                                Supprimer
-                            </button>
-                        </form>
-                    <?php endif; ?>
-
-
-
-
 
                 </footer>
             </article>

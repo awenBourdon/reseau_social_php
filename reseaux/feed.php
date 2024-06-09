@@ -12,7 +12,7 @@ if (!isset($_SESSION['connected_id'])) {
     <head>
         <meta charset="utf-8">
         <title>Feed / C</title>         
-        <meta name="author" content="Julien Falconnet">
+        <meta name="author" content="Nora et Awen">
         <link rel="icon" href="images/favicon.svg" type="image/x-icon">
         <link rel="stylesheet" href="style.css"/>
     </head>
@@ -52,7 +52,7 @@ if (!isset($_SESSION['connected_id'])) {
             ?>
             <?php
             
-            $mysqli = new mysqli("localhost", "root", "^f2.?abH;Cp?3ZU", "socialnetwork");
+            $mysqli = new mysqli("localhost", "root", " écrivez votre mot de passe ici, sinon si Mac -> root ou Windows -> vide", "socialnetwork");
             ?>
 
             <aside>
@@ -63,11 +63,11 @@ if (!isset($_SESSION['connected_id'])) {
                 $user = $lesInformations->fetch_assoc();
                
                 ?>
-                <img src="images/people.png" alt="Portrait de l'utilisateur"/>
+                <img src="images/people.png" alt="Portrait de"/>
                 <section>
                     <h3>Présentation</h3>
-                    <p>Sur cette page vous trouverez tous les message des utilisatrices
-                        auxquel est abonnée l'utilisatrice <?php echo $user['alias'] ?>
+                    <p>Sur cette page vous trouverez tous les message des utilisateurs
+                        auxquel est abonnée  <?php echo $user['alias'] ?>
                         (n° <?php echo $user['id'] ?>)
                     </p>
 

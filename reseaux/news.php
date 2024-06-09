@@ -7,7 +7,7 @@ if (!isset($_SESSION['connected_id'])) {
 }
 
 
-$mysqli = new mysqli("localhost", "root", "^f2.?abH;Cp?3ZU", "socialnetwork");
+$mysqli = new mysqli("localhost", "root", " écrivez votre mot de passe ici, sinon si Mac -> root ou Windows -> vide", "socialnetwork");
 if ($mysqli->connect_errno) {
     echo "Échec de la connexion à MySQL : " . $mysqli->connect_error;
     exit();
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="utf-8">
     <title>Home / C</title> 
-    <meta name="author" content="Julien Falconnet">
+    <meta name="author" content="Nora et Awen">
     <link rel="icon" href="images/favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="style.css"/>
 </head>
@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </header>
 <div id="wrapper">
     <aside>
-        <img src="images/people.png" alt="Portrait de l'utilisateur"/>
+        <img src="images/people.png" alt="Portrait de"/>
         <section>
             <h3>Présentation</h3>
             <p>Sur cette page vous trouverez les derniers messages de tous les utilisateurs du site.</p>
